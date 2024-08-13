@@ -1,47 +1,46 @@
 <!DOCTYPE html>
-
 <html>
-
 <head>
-	<link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
+<body>
+    <script>
+        function secondHighest(arr) {
+            // Convert all elements to numbers
+            arr = arr.map(Number);
 
-<body>	
-	<script>
-		function secondHighest(arr) {
-			//Write your code here
-			// Convert all elements to numbers
-			arr = arr.map(Number);
+            // Remove duplicate elements
+            arr = [...new Set(arr)];
 
-			// Remove duplicate elements
-			arr = [...new Set(arr)];
-
-			 // Sort the array in descending order
-            arr.sort((a, b) => b - a);
-
-			 // Check if we have at least two unique numbers
+            // Check if we have at least two unique numbers
             if (arr.length < 2) {
-                return "Not enough unique numbers.";
+                return -Infinity;
             }
+
+            // Sort the array in descending order
+            arr.sort((a, b) => b - a);
 
             // Return the second highest number
             return arr[1];
-		}
+        }
 
-		function Main() {
-			var n = prompt("Enter the number of elements");
-			var arr = [];
-			for (var i = 0; i < n; i++) {
-				arr[i] = prompt("Enter element " + (i+1));
-			}
-			alert(secondHighest(arr));
-		}
-		Main();
-	</script>
+        function Main() {
+            var n = prompt("Enter the number of elements");
+            if (n === "0") {
+                alert(-Infinity);
+                return;
+            }
 
-    <script type="text/javascript" src="./script.js">
-</script>
+            var arr = [];
+            for (var i = 0; i < n; i++) {
+                arr[i] = prompt("Enter element " + (i + 1));
+            }
+            alert(secondHighest(arr));
+        }
 
+        Main();
+    </script>
+
+    <script type="text/javascript" src="./script.js"></script>
 </body>
-
 </html>
